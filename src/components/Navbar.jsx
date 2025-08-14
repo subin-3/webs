@@ -1,40 +1,114 @@
-import React, { useState } from 'react';
+import { AppBar, Toolbar, Typography, Button, Box } from '@mui/material';
+import { Link } from 'react-router-dom';
+import logo from '../assets/images/WEBS.png';
 
-const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
+export default function Navbar() {
   return (
-    <nav className="bg-gradient-to-r from-blue-600 to-purple-700 p-4 shadow-lg sticky top-0 z-50">
-      <div className="container mx-auto flex justify-between items-center">
-        <div className="text-white text-3xl font-bold font-['Poppins']">NEPTech</div>
-        <div className="hidden md:flex space-x-8">
-          <a href="#home" className="text-white hover:text-blue-200 transition duration-300 ease-in-out font-semibold text-lg">Home</a>
-          <a href="#about" className="text-white hover:text-blue-200 transition duration-300 ease-in-out font-semibold text-lg">About Us</a>
-          <a href="#services" className="text-white hover:text-blue-200 transition duration-300 ease-in-out font-semibold text-lg">Services</a>
-          <a href="#projects" className="text-white hover:text-blue-200 transition duration-300 ease-in-out font-semibold text-lg">Projects</a>
-          <a href="#team" className="text-white hover:text-blue-200 transition duration-300 ease-in-out font-semibold text-lg">Team</a>
-          <a href="#contact" className="text-white hover:text-blue-200 transition duration-300 ease-in-out font-semibold text-lg">Contact</a>
-        </div>
-        <div className="md:hidden">
-          <button onClick={() => setIsOpen(!isOpen)} className="text-white focus:outline-none">
-            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}></path>
-            </svg>
-          </button>
-        </div>
-      </div>
-      {isOpen && (
-        <div className="md:hidden mt-4 bg-purple-800 rounded-md">
-          <a href="#home" className="block text-white px-4 py-2 hover:bg-purple-700 transition duration-300 ease-in-out">Home</a>
-          <a href="#about" className="block text-white px-4 py-2 hover:bg-purple-700 transition duration-300 ease-in-out">About Us</a>
-          <a href="#services" className="block text-white px-4 py-2 hover:bg-purple-700 transition duration-300 ease-in-out">Services</a>
-          <a href="#projects" className="block text-white px-4 py-2 hover:bg-purple-700 transition duration-300 ease-in-out">Projects</a>
-          <a href="#team" className="block text-white px-4 py-2 hover:bg-purple-700 transition duration-300 ease-in-out">Team</a>
-          <a href="#contact" className="block text-white px-4 py-2 hover:bg-purple-700 transition duration-300 ease-in-out">Contact</a>
-        </div>
-      )}
-    </nav>
+    <AppBar 
+      position="fixed" 
+      sx={{ 
+        backgroundColor: 'rgba(255, 255, 255, 0.9)',
+        backdropFilter: 'blur(8px)',
+        boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
+        zIndex: 1200,
+        width: '100%',
+      }}
+    >
+      <Toolbar sx={{ 
+        maxWidth: 'xl',
+        mx: 'auto',
+        width: '100%',
+        px: 3
+      }}>
+        {/* Logo with Title */}
+        <Box 
+          component={Link} 
+          to="/" 
+          sx={{ 
+            display: 'flex', 
+            alignItems: 'center', 
+            textDecoration: 'none',
+            mr: 4
+          }}
+        >
+          <img 
+            src={logo} 
+            alt="WEBS Logo" 
+            style={{ 
+              height: '50px',
+              marginRight: '12px'
+            }} 
+          />
+          <Typography 
+            variant="h6" 
+            sx={{ 
+              fontWeight: 700,
+              background: 'linear-gradient(135deg, #4285F4 0%, #34A853 50%, #FBBC05 100%)',
+              WebkitBackgroundClip: 'text',
+              backgroundClip: 'text',
+              color: 'transparent'
+            }}
+          >
+            WEBS
+          </Typography>
+        </Box>
+        
+        {/* Navigation Links */}
+        <Box sx={{ display: 'flex', flexGrow: 1, gap: 1 }}>
+          <Button 
+            component={Link} 
+            to="/"
+            sx={{ 
+              color: '#5f6368',
+              fontWeight: 500,
+              '&:hover': {
+                color: '#4285F4'
+              }
+            }}
+          >
+            Home
+          </Button>
+          <Button 
+            component={Link} 
+            to="/about"
+            sx={{ 
+              color: '#5f6368',
+              fontWeight: 500,
+              '&:hover': {
+                color: '#34A853'
+              }
+            }}
+          >
+            About
+          </Button>
+          <Button 
+            component={Link} 
+            to="/Courses"
+            sx={{ 
+              color: '#5f6368',
+              fontWeight: 500,
+              '&:hover': {
+                color: '#FBBC05'
+              }
+            }}
+          >
+            Courses
+          </Button>
+          <Button 
+            component={Link} 
+            to="/contact"
+            sx={{ 
+              color: '#5f6368',
+              fontWeight: 500,
+              '&:hover': {
+                color: '#EA4335'
+              }
+            }}
+          >
+            Contact
+          </Button>
+        </Box>
+      </Toolbar>
+    </AppBar>
   );
-};
-
-export default Navbar;
+}

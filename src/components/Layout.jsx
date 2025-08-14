@@ -1,15 +1,37 @@
-import React from 'react'
-import Navbar from './Navbar'
+import { Box } from '@mui/material';
+import Navbar from './Navbar';
+import Footer from './Footer';
+const Contact = () => {
+  const email = import.meta.env.VITE_MYEMAIL;
 
-const Layout = () => {
+  const formsubmitUrl = `https://formsubmit.co/${email}`;}
+
+export default function Layout({ children }) {
   return (
-   <>
-   <Navbar />
-   <Outlet />
-   <Footer />
-   
-   </>
-  )
+    <Box sx={{
+      display: 'flex',
+      flexDirection: 'column',
+      minHeight: '100vh',
+      width: '100%',
+      overflowX: 'hidden'
+    }}>
+      {/* Fixed Navbar */}
+      <Navbar />
+      
+      {/* Main Content Area */}
+      <Box 
+        component="main"
+        sx={{
+          flexGrow: 1,
+          width: '100%',
+          pt: { xs: '56px', md: '64px' } // Matches navbar height
+        }}
+      >
+        {children}
+      </Box>
+      
+      {/* Footer */}
+      <Footer />
+    </Box>
+  );
 }
-
-export default Layout
