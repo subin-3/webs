@@ -178,7 +178,7 @@ export default function Home() {
           <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2 }}>
             <Button 
               component={Link}
-              to="/signup"
+              to="/Signup"
               variant="contained"
               size="large"
               sx={{ px: 4 }}
